@@ -3,14 +3,14 @@
  *
  * Copyright (C) 2013 - 2016, Max Lv <max.c.lv@gmail.com>
  *
- * This file is part of the shadowsocks-libev.
+ * This file is part of the shadowsocksr-libev.
  *
- * shadowsocks-libev is free software; you can redistribute it and/or modify
+ * shadowsocksr-libev is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
- * shadowsocks-libev is distributed in the hope that it will be useful,
+ * shadowsocksr-libev is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
@@ -1795,7 +1795,7 @@ main(int argc, char **argv)
         // Setup UDP
         if (mode != TCP_ONLY) {
             init_udprelay(server_host[index], server_port, mtu,
-                          atoi(timeout), iface, NULL, NULL);
+                          atoi(timeout), iface, NULL, NULL, NULL);
         }
 
         if (host && strcmp(host, ":") > 0)

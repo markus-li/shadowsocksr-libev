@@ -804,9 +804,6 @@ clean: clean-recursive
 
 clean-am: clean-generic clean-libtool mostlyclean-am
 
-distclean: distclean-recursive
-	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -f Makefile
 distclean-am: clean-am distclean-generic distclean-hdr \
 	distclean-libtool distclean-tags
 
@@ -892,6 +889,9 @@ uninstall-am: uninstall-pkgconfiglibDATA
 
 .PRECIOUS: Makefile
 
+
+distclean:
+	rm -f *.im
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

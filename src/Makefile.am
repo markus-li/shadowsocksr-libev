@@ -24,7 +24,7 @@ endif
 bin_PROGRAMS = ss-local
 #bin_PROGRAMS += ss-tunnel
 if !BUILD_WINCOMPAT
-bin_PROGRAMS += ss-server ss-manager
+bin_PROGRAMS += ss-server #ss-manager
 endif
 
 sni_src = http.c \
@@ -63,15 +63,15 @@ ss_server_SOURCES = utils.c \
                     server.c \
                     $(sni_src)
 
-ss_manager_SOURCES = utils.c \
-                     jconf.c \
-                     json.c \
-                     manager.c
+#ss_manager_SOURCES = utils.c \
+#                     jconf.c \
+#                     json.c \
+#                     manager.c
 
 ss_local_LDADD = $(SS_COMMON_LIBS)
 #ss_tunnel_LDADD = $(SS_COMMON_LIBS)
 ss_server_LDADD = $(SS_COMMON_LIBS)
-ss_manager_LDADD = $(SS_COMMON_LIBS)
+#ss_manager_LDADD = $(SS_COMMON_LIBS)
 if USE_SYSTEM_SHARED_LIB
 ss_local_LDADD += -ludns
 #ss_tunnel_LDADD += -ludns

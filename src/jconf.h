@@ -91,10 +91,22 @@ typedef struct {
 
 typedef struct {
     int conf_ver; // 0 for legacy, > 0 for server_new_X
+    int remote_num;
+    char *remote_port;
     union {
         ss_server_legacy_t server_legacy;
         ss_server_new_1_t server_new_1;
     };
+    ss_addr_t remote_addr[MAX_REMOTE_NUM];
+    int port_password_num;
+    
+    char *password;
+    char *protocol; // SSR
+    char *protocol_param; // SSR
+    char *method;
+    char *obfs; // SSR
+    char *obfs_param; // SSR
+    
     char *timeout;
     char *user;
     int fast_open;

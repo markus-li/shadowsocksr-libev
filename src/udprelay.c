@@ -1015,10 +1015,13 @@ server_recv_cb(EV_P_ ev_io *w, int revents)
 
     char addr_header[512] = { 0 };
     int addr_header_len   = 0;
-    uint8_t frag = 0;
+    
+    
 
     char host[257] = { 0 };
     char port[65]  = { 0 };
+	#ifdef MODULE_LOCAL
+	uint8_t frag = 0;
     if (server_ctx->tunnel_addr.host && server_ctx->tunnel_addr.port) {
         strncpy(host, server_ctx->tunnel_addr.host, 256);
         strncpy(port, server_ctx->tunnel_addr.port, 64);
@@ -1073,8 +1076,9 @@ server_recv_cb(EV_P_ ev_io *w, int revents)
         buf->len += addr_header_len;
 
     } else {
-
-        frag = *(uint8_t *)(buf->array + 2);
+    	frag = *(uint8_t *)(buf->array + 2);
+    #endif
+        
         offset += 3;
         struct sockaddr_storage dst_addr;
         memset(&dst_addr, 0, sizeof(struct sockaddr_storage));
@@ -1087,7 +1091,9 @@ server_recv_cb(EV_P_ ev_io *w, int revents)
         }
 
         strncpy(addr_header, buf->array + offset, addr_header_len);
+    #ifdef MODULE_LOCAL
     }
+    #endif
 #endif
 
 #ifdef MODULE_LOCAL

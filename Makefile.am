@@ -12,3 +12,6 @@ ACLOCAL_AMFLAGS = -I m4
 
 pkgconfiglibdir = $(libdir)/pkgconfig
 pkgconfiglib_DATA = shadowsocks-libev.pc
+
+distclean:
+	rm -f *.im
